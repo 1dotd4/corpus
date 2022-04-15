@@ -62,14 +62,10 @@ The ranking result should keep track of the documents while sorting.
 
 ### Datastructures notes
 
-We start counting frequencies with something like:
-- alist / hashmap
-- [Trie](https://en.wikipedia.org/wiki/Trie)
-- [TokenSet](https://lunrjs.com/docs/token_set.js.html)
-
-We then serialize to something simpler where we can query:
-- alist
-- sqlite table (docid, term, freq)
+Depending on search method we can choose between some datastructures to count occurrencies of terms:
+- hashmap are good when we lookup for exact terms;
+- I don't know how good could be the SQLite Index;
+- [DAFSA](https://en.m.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton) are good for building a fuzzable search for each term (see lunr.js [TokenSet](https://lunrjs.com/docs/token_set.js.html)).
 
 ## Resources
 
