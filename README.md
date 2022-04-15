@@ -60,6 +60,17 @@ It is sufficent to map the query terms into a vector of weights based on tf-idf.
 Then transposing the matrix and applying the cosine theorem we have the affinity of the documents based on the the query.
 The ranking result should keep track of the documents while sorting.
 
+### Datastructures notes
+
+We start counting frequencies with something like:
+- alist / hashmap
+- [Trie](https://en.wikipedia.org/wiki/Trie)
+- [TokenSet](https://lunrjs.com/docs/token_set.js.html)
+
+We then serialize to something simpler where we can query:
+- alist
+- sqlite table (docid, term, freq)
+
 ## Resources
 
 - [tf-idf](https://en.m.wikipedia.org/wiki/Tf%E2%80%93idf)
