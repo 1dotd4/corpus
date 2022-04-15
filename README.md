@@ -37,6 +37,24 @@ Querying:
 Caching:
 - Cache is invalidated when a new document is inserted or removed from the library.
 
+### Tf-idf PoC results
+
+The following interfaces are required:
+- `insert-document`
+- `insert-term`
+- `remove-document`
+- `remove-term`
+
+To facilitate this, the data-structure must have:
+- the number of documents;
+- for each term, the number of documents it appers in;
+- for each document, each term frequencies.
+
+This is sufficient to allow:
+- indexing new documents without evaluating every other document;
+- querying a vector of terms and comparing the affinity.
+
+
 ## Resources
 
 - [tf-idf](https://en.m.wikipedia.org/wiki/Tf%E2%80%93idf)
