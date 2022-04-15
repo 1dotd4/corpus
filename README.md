@@ -54,6 +54,11 @@ This is sufficient to allow:
 - indexing new documents without evaluating every other document;
 - querying a vector of terms and comparing the affinity.
 
+### Vector space models PoC results
+
+It is sufficent to map the query terms into a vector of weights based on tf-idf.
+Then transposing the matrix and applying the cosine theorem we have the affinity of the documents based on the the query.
+The ranking result should keep track of the documents while sorting.
 
 ## Resources
 
