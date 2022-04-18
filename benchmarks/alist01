@@ -1,0 +1,109 @@
+./index.scm "logic turing" examples/OnTheBuildingBlocksOfMathematicalLogic.pdf examples/compiling-to-categories.pdf examples/phrasal_forms.pdf examples/notation_tool.pdf examples/phlou_0035-3841_1952_num_50_26_4394.pdf examples/armstrong_thesis_2003.pdf examples/Alexander\ Farrugia.pdf examples/liberate_from_von_neumann.pdf > bench
+40
+Inserting examples/OnTheBuildingBlocksOfMathematicalLogic.pdf
+750
+Inserting examples/compiling-to-categories.pdf
+4350
+Inserting examples/phrasal_forms.pdf
+4580
+Inserting examples/notation_tool.pdf
+11240
+Inserting examples/phlou_0035-3841_1952_num_50_26_4394.pdf
+12260
+Inserting examples/armstrong_thesis_2003.pdf
+59020
+Inserting examples/Alexander Farrugia.pdf
+59580
+Inserting examples/liberate_from_von_neumann.pdf
+68950
+Searching...
+examples/liberate_from_von_neumann.pdf
+4059
+5
+26822
+0.903089986991943
+examples/liberate_from_von_neumann.pdf
+4059
+5
+26822
+0.903089986991943
+examples/Alexander Farrugia.pdf
+1109
+39
+4689
+0.903089986991943
+examples/Alexander Farrugia.pdf
+1109
+4
+4689
+0.903089986991943
+examples/armstrong_thesis_2003.pdf
+7845
+6
+66585
+0.903089986991943
+examples/armstrong_thesis_2003.pdf
+7845
+0
+66585
+0.903089986991943
+examples/phlou_0035-3841_1952_num_50_26_4394.pdf
+1531
+7
+7736
+0.903089986991943
+examples/phlou_0035-3841_1952_num_50_26_4394.pdf
+1531
+0
+7736
+0.903089986991943
+examples/notation_tool.pdf
+3187
+1
+36588
+0.903089986991943
+examples/notation_tool.pdf
+3187
+2
+36588
+0.903089986991943
+examples/phrasal_forms.pdf
+919
+3
+2187
+0.903089986991943
+examples/phrasal_forms.pdf
+919
+0
+2187
+0.903089986991943
+examples/compiling-to-categories.pdf
+2794
+3
+13924
+0.903089986991943
+examples/compiling-to-categories.pdf
+2794
+0
+13924
+0.903089986991943
+examples/OnTheBuildingBlocksOfMathematicalLogic.pdf
+1361
+26
+5364
+0.903089986991943
+examples/OnTheBuildingBlocksOfMathematicalLogic.pdf
+1361
+0
+5364
+0.903089986991943
+(0.000168348741143827 0.000168348741143827)
+(0.00751130507414924 0.000770390264015307)
+(8.13777866178818e-05 0.0)
+(0.000817170360514944 0.0)
+(2.46826824913071e-05 4.93653649826142e-05)
+(0.00123880656651844 0.0)
+(0.000194575550199356 0.0)
+(0.00437739367296617 0.0)
+((examples/liberate_from_von_neumann.pdf 1.0) (examples/notation_tool.pdf 0.948683298050514) (examples/Alexander Farrugia.pdf 0.775562003711193) (examples/armstrong_thesis_2003.pdf 0.707106781186547) (examples/phlou_0035-3841_1952_num_50_26_4394.pdf 0.707106781186547) (examples/phrasal_forms.pdf 0.707106781186547) (examples/compiling-to-categories.pdf 0.707106781186547) (examples/OnTheBuildingBlocksOfMathematicalLogic.pdf 0.707106781186547))
+68970

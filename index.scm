@@ -4,6 +4,9 @@
   (srfi-13)
   (chicken io)
   (chicken sort)
+  (chicken time)
+  (chicken time posix)
+  (chicken format)
   (chicken string)
   (chicken process)
   (chicken process-context)
@@ -12,9 +15,9 @@
 
 (define (read-pdf filename)
   (with-input-from-pipe
-    (conc "pdftotext "
+    (conc "pdftotext '"
           filename
-          " -")
+          "' -")
     (lambda ()
       (read-string #f))))
 
@@ -49,6 +52,8 @@
       string=?)))
 
 (define (insert-document doc-name db)
+  (print (cpu-time))
+  (print (format "Inserting ~A" doc-name))
   (let ((terms 
           ((o ; filter / map here
               (cut map string-downcase <>)
@@ -105,6 +110,8 @@
 
 
 (define (search query db)
+  (print (cpu-time))
+  (print "Searching...")
   (let* ((query-terms  (split-words query))
          (query-vector (map (lambda (x) 1) (iota (length query-terms))))
          (terms-vectors (document-vectors query-terms db)))
@@ -118,10 +125,11 @@
       document-vector-similarity>?)))
 
 
-(print
-  (search
-    "logic turing"
-    (fold
-      insert-document
-      (init-database)
-      (command-line-arguments))))
+(let* ((args (command-line-arguments))
+       (query (car args))
+       (docs (cdr args)))
+  (print
+    (search query
+            (fold insert-document (init-database) docs))))
+
+(print (cpu-time))
