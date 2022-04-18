@@ -1,6 +1,9 @@
 #!/usr/local/bin/chicken-csi -script
 (import 
+  (srfi-1)
+  (srfi-13)
   (chicken io)
+  (chicken sort)
   (chicken string)
   (chicken process)
   (chicken process-context)
@@ -22,7 +25,7 @@
   (string-split s "\n" #t))
 
 (define (split-words s)
-  (string-split s " "))
+  (string-split s " \n.,"))
 
 (define (init-database) '())
 
@@ -36,7 +39,7 @@
 ;               (insert-term-count-document db current-term-count-documents 
 ;   )
 
-(define (insert-term ts t)
+(define (insert-term t ts)
   (cons
     (add1 (car ts))
     (alist-update
@@ -48,15 +51,15 @@
 (define (insert-document doc-name db)
   (let ((terms 
           ((o ; filter / map here
+              (cut map string-downcase <>)
               split-words)
            (read-pdf doc-name))))
     (cons (cons doc-name (fold insert-term '(0 . ()) terms)) db)))
 
 (define (document->name d) (car d))
 
-(define (document-similarity>? a b)
+(define (document-vector-similarity>? a b)
   (> (cadr a) (cadr b)))
-
 
 ;; vector operations
 
@@ -68,26 +71,57 @@
 
 (define (similarity q)
   (lambda (dj)
+    (print dj)
     (/ (dot-product dj q)
        (* (norm-2 dj)
           (norm-2 q)))))
 
 ;; search
 
+(define (document-vectors query-terms db)
+  (define (count-document-matched t)
+    (length
+      (filter 
+        (lambda (d) (alist-ref t (cddr d)))
+        db)))
+  (let ((no-docs (length db)))
+    (define (doc-vect doc)
+      (map
+        (lambda (t)
+          (let* ((term-doc-match (count-document-matched t))
+                 (idf (/ (log (/ no-docs (add1 term-doc-match)))
+                         (log 10))))
+            (print (car doc))
+            (print (length (cddr doc)))
+            ; (print (cddr doc))
+            (print (alist-ref t (cddr doc) string=? 0))
+            (print (cadr doc))
+            (print idf)
+            (* (/ (alist-ref t (cddr doc) string=? 0)
+                  (cadr doc))
+               idf)))
+        query-terms))
+    (map doc-vect db)))
+
+
 (define (search query db)
   (let* ((query-terms  (split-words query))
          (query-vector (map (lambda (x) 1) (iota (length query-terms))))
-         (terms-vectors (document-vectors query-vector db)))
+         (terms-vectors (document-vectors query-terms db)))
     (sort 
-      (zip (map document->name db)
-           (map (similarity query-vector)
-                terms-vectors))
-      document-similarity>?)))
+      (filter
+        (lambda (d) (> (cadr d) 0))
+        (zip (map document->name db)
+             (map 
+               (similarity query-vector)
+               terms-vectors)))
+      document-vector-similarity>?)))
 
 
-(search "elliptic curve"
-  (fold
-    insert-document
-    (init-database)
-    (command-line-arguments)))
-
+(print
+  (search
+    "logic turing"
+    (fold
+      insert-document
+      (init-database)
+      (command-line-arguments))))
