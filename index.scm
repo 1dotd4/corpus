@@ -11,6 +11,7 @@
   (chicken process)
   (chicken process-context)
   ;
+  (sql-de-lite)
   )
 
 (define (read-pdf filename)
@@ -28,7 +29,7 @@
   (string-split s "\n" #t))
 
 (define (split-words s)
-  (string-split s " \n.,"))
+  (string-split s " \n.,;()[]{}'\""))
 
 (define (init-database) '())
 
@@ -51,13 +52,61 @@
            (read-pdf doc-name))))
     (cons (cons doc-name (fold insert-term '(0 . ()) terms)) db)))
 
-(with-output-to-file
-  "database.sexp"
-  (lambda ()
-    (write
-      (fold
-        insert-document
-        (init-database)
-        (command-line-arguments)))))
+(define (index-to-sexp)
+  (with-output-to-file
+    "database.sexp"
+    (lambda ()
+      (write
+        (fold
+          insert-document
+          (init-database)
+          (command-line-arguments))))))
+
+(define (init-sqlite-database db)
+  (exec (sql db "create table if not exists documents (name text);"))
+  (exec (sql db "create table if not exists termcount (docid INT, term TEXT, count INT DEFAULT 0, primary key (docid, term));"))
+  (exec (sql db "create index terms on termcount (docid, term);")))
+
+(define (insert-term-sqlite db docid)
+  (lambda (term)
+    (exec
+      (sql db "insert or ignore into termcount (docid, term, count) values (?, ?, 0);")
+      docid
+      term)
+    (exec
+      (sql db "update termcount set count = count + 1 where docid = ? and term = ? ;")
+      docid
+      term)))
+
+(define (insert-document-sqlite doc-name db)
+  (exec (sql db "insert into documents (name) values (?) ;") doc-name)
+  (let ((docid (exec (sql db "select last_insert_rowid();")))
+        (terms 
+          ((o ; filter / map here
+             (cut map string-downcase <>)
+             split-words)
+           (read-pdf doc-name))))
+    (print (cpu-time))
+    (print docid)
+    (map
+      (insert-term-sqlite db (car docid))
+      terms)
+    db))
+
+
+
+
+(define (index-to-sqlite)
+  (call-with-database
+    "database.sqlite3"
+    (lambda (db)
+      (begin
+        (init-sqlite-database db)
+        (fold
+          insert-document-sqlite
+          db
+          (command-line-arguments))))))
+
+(index-to-sqlite)
 
 (print (cpu-time))

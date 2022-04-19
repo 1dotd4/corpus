@@ -67,6 +67,10 @@ Depending on search method we can choose between some datastructures to count oc
 - I don't know how good could be the SQLite Index;
 - [DAFSA](https://en.m.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton) are good for building a fuzzable search for each term (see lunr.js [TokenSet](https://lunrjs.com/docs/token_set.js.html)).
 
+### SQLite notes
+
+No. Using sqlite to update the term count is simply painful. It takes more than a minute to add a document because of this.
+
 ## Resources
 
 - [tf-idf](https://en.m.wikipedia.org/wiki/Tf%E2%80%93idf)
