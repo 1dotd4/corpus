@@ -1,0 +1,93 @@
+250
+Searching...
+examples/compiling-to-categories.pdf
+2348
+3
+13823
+0.903089986991943
+examples/compiling-to-categories.pdf
+2348
+0
+13823
+0.903089986991943
+examples/phrasal_forms.pdf
+874
+3
+2254
+0.903089986991943
+examples/phrasal_forms.pdf
+874
+0
+2254
+0.903089986991943
+examples/phlou_0035-3841_1952_num_50_26_4394.pdf
+1382
+7
+7706
+0.903089986991943
+examples/phlou_0035-3841_1952_num_50_26_4394.pdf
+1382
+0
+7706
+0.903089986991943
+examples/liberate_from_von_neumann.pdf
+3367
+5
+26996
+0.903089986991943
+examples/liberate_from_von_neumann.pdf
+3367
+5
+26996
+0.903089986991943
+examples/Alexander Farrugia.pdf
+1031
+39
+4272
+0.903089986991943
+examples/Alexander Farrugia.pdf
+1031
+4
+4272
+0.903089986991943
+examples/armstrong_thesis_2003.pdf
+6514
+6
+67284
+0.903089986991943
+examples/armstrong_thesis_2003.pdf
+6514
+0
+67284
+0.903089986991943
+examples/notation_tool.pdf
+2878
+1
+36673
+0.903089986991943
+examples/notation_tool.pdf
+2878
+2
+36673
+0.903089986991943
+examples/OnTheBuildingBlocksOfMathematicalLogic.pdf
+1200
+26
+5474
+0.903089986991943
+examples/OnTheBuildingBlocksOfMathematicalLogic.pdf
+1200
+0
+5474
+0.903089986991943
+(0.000195997248135414 0.0)
+(0.00120198312376922 0.0)
+(0.000820351662203946 0.0)
+(0.000167263666282402 0.000167263666282402)
+(0.00824450128574106 0.000845589875460621)
+(8.05323690914877e-05 0.0)
+(2.46254734270974e-05 4.92509468541948e-05)
+(0.00428942997109801 0.0)
+((examples/liberate_from_von_neumann.pdf 1.0) (examples/notation_tool.pdf 0.948683298050514) (examples/Alexander Farrugia.pdf 0.775562003711193) (examples/compiling-to-categories.pdf 0.707106781186547) (examples/phrasal_forms.pdf 0.707106781186547) (examples/phlou_0035-3841_1952_num_50_26_4394.pdf 0.707106781186547) (examples/armstrong_thesis_2003.pdf 0.707106781186547) (examples/OnTheBuildingBlocksOfMathematicalLogic.pdf 0.707106781186547))
+260
+    0m00.28s real     0m00.27s user     0m00.01s system
