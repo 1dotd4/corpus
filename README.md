@@ -11,6 +11,9 @@ Special thanks to friends and lainons.
 - model data based on needs
 - implement database funcionalities
 ...
+- check for duplicates
+  - update duplicates
+- add database version and header
 
 ### Requirements
 

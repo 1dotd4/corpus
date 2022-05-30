@@ -169,6 +169,5 @@
           (print "Searching for terms: `" (string-join operands " ") "`.")
           (search-from-sexp operands))))
 
-
 ;; TODO: print only if asked to
 (print (cpu-time))
