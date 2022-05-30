@@ -1,4 +1,3 @@
-#!/usr/bin/csi -script
 (import 
   (srfi-1)
   (srfi-13)
@@ -24,6 +23,12 @@
   (string-split s "\n" #t))
 (define (split-words s)
   (string-split s " \n.,;()[]{}'\""))
+(define (print-cpu-time)
+  (receive
+    (a b)
+    (cpu-time)
+    (print a)))
+
 
 ;; vector operations
 (define (vector:similarity q)
@@ -97,7 +102,7 @@
         query-terms))
     (map doc-vect db)))
 (define (db:search db query)
-  (print (cpu-time))
+  (print-cpu-time)
   (print "Searching...")
   (let* ((query-terms  (split-words query))
          (query-vector (map (lambda (x) 1) (iota (length query-terms))))
@@ -148,7 +153,7 @@
   (with-output-to-port
     (current-error-port)
     (lambda ()
-      (print "Usage: " (car (argv)) " [options...] [files...]")
+      (print (conc "Usage: " (car (argv)) " [options...] [files...]"))
       (newline)
       (print (args:usage opts))
       (print +version+)))
@@ -162,12 +167,11 @@
   (options operands)
   (args:parse (command-line-arguments) opts)
   (cond ((equal? operation 'add)
-         (print "Will import `" (string-join operands " ") "`.")
-         (print operands)
+         (print (conc "Will import `" (string-join operands " ") "`."))
          (index-to-sexp operands))
         (else
-          (print "Searching for terms: `" (string-join operands " ") "`.")
+          (print (conc "Searching for terms: `" (string-join operands " ") "`."))
           (search-from-sexp operands))))
 
 ;; TODO: print only if asked to
-(print (cpu-time))
+(print-cpu-time)
