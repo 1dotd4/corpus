@@ -3,7 +3,7 @@
 CSC ?= chicken-csc
 BIN=corpus
 SRCS=corpus.scm
-LINKS=corpus.links
+LINKS=corpus.link
 
 all: $(BIN)
 
