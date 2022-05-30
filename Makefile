@@ -11,6 +11,6 @@ $(BIN): $(SRCS)
 	$(CSC) -static -O3 -d0 -o $(BIN) $(SRCS)
 
 clean:
-	rm $(BIN) $(LINKS)
+	rm -f $(BIN) $(LINKS)
 
 .PHONY: all clean

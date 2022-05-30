@@ -2,12 +2,14 @@
   (srfi-1)
   (srfi-13)
   (args)
+  (format)
   (chicken io)
   (chicken port)
   (chicken sort)
   (chicken time)
   (chicken time posix)
-  (chicken format)
+  ; (chicken flonum) format already does that
+  ;(chicken format) smaller lib we don't need
   (chicken string)
   (chicken process)
   (chicken process-context)
@@ -23,11 +25,17 @@
   (string-split s "\n" #t))
 (define (split-words s)
   (string-split s " \n.,;()[]{}'\""))
+(define +cpu-stop+ 0)
+(define (set-cpu-time!)
+  (receive
+    (a b)
+    (cpu-time)
+    (set! +cpu-stop+ a)))
 (define (print-cpu-time)
   (receive
     (a b)
     (cpu-time)
-    (print a)))
+    (format #t "~Ams\n" (- a +cpu-stop+))))
 
 
 ;; vector operations
@@ -90,19 +98,19 @@
           (let* ((term-doc-match (count-document-matched t))
                  (idf (/ (log (/ no-docs (add1 term-doc-match)))
                          (log 10))))
-            (print (car doc))
-            (print (length (cddr doc)))
-            ; (print (cddr doc))
-            (print (alist-ref t (cddr doc) string=? 0))
-            (print (cadr doc))
-            (print idf)
+            ; (print (car doc))
+            ; (print (length (cddr doc)))
+            ; ; (print (cddr doc))
+            ; (print (alist-ref t (cddr doc) string=? 0))
+            ; (print (cadr doc))
+            ; (print idf)
             (* (/ (alist-ref t (cddr doc) string=? 0)
                   (cadr doc))
                idf)))
         query-terms))
     (map doc-vect db)))
 (define (db:search db query)
-  (print-cpu-time)
+  (set-cpu-time!)
   (print "Searching...")
   (let* ((query-terms  (split-words query))
          (query-vector (map (lambda (x) 1) (iota (length query-terms))))
@@ -132,7 +140,10 @@
       (lambda () (write db)))))
 ;; Search
 (define (search-from-sexp operands)
-  (print
+  (define (display-results results)
+    (map (lambda (r) (format #t "~5F\t~A\n" (cadr r) (car r))) ; TODO: better methods for result inspection
+         (reverse results)))
+  (display-results
     (db:search
       (db:load-database)
       (string-join operands " "))))
