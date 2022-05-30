@@ -18,27 +18,27 @@
 
 (define (document->name d) (car d))
 
-(define (document-vector-similarity>? a b)
+(define (document->greater a b)
   (> (cadr a) (cadr b)))
 
 ;; vector operations
 
-(define (dot-product a b)
-  (fold + 0 (map (lambda (z) (* (car z) (cadr z))) (zip a b))))
 
-(define (norm-2 a)
-  (sqrt (fold + 0 (map (lambda (x) (* x x)) a))))
-
-(define (similarity q)
+(define (vector:similarity q)
+  (define (dot-product a b)
+    (fold + 0 (map (lambda (z) (* (car z) (cadr z))) (zip a b))))
+  (define (norm-2 a)
+    (sqrt (fold + 0 (map (lambda (x) (* x x)) a))))
+  ;; "Higher order" function that calculate cosine of angle between vectors
   (lambda (dj)
-    (print dj)
+    ; (print dj)
     (/ (dot-product dj q)
        (* (norm-2 dj)
           (norm-2 q)))))
 
 ;; search
 
-(define (document-vectors query-terms db)
+(define (db:document-vectors query-terms db)
   (define (count-document-matched t)
     (length
       (filter 
@@ -64,30 +64,29 @@
     (map doc-vect db)))
 
 
-(define (search query db)
+(define (db:search db query)
   (print (cpu-time))
   (print "Searching...")
   (let* ((query-terms  (split-words query))
          (query-vector (map (lambda (x) 1) (iota (length query-terms))))
-         (terms-vectors (document-vectors query-terms db)))
+         (terms-vectors (db:document-vectors query-terms db)))
     (sort 
       (filter
         (lambda (d) (> (cadr d) 0))
         (zip (map document->name db)
-             (map 
-               (similarity query-vector)
-               terms-vectors)))
-      document-vector-similarity>?)))
+             (map (vector:similarity query-vector)
+                  terms-vectors)))
+      document->greater)))
 
-(define (load-database)
+(define (db:load-database)
   (with-input-from-file
     "database.sexp"
     (lambda () (read))))
 
 (let* ((args (command-line-arguments)))
   (print
-    (search
-      (string-join (command-line-arguments) " ")
-      (load-database))))
+    (db:search
+      (db:load-database)
+      (string-join (command-line-arguments) " "))))
 
 (print (cpu-time))
