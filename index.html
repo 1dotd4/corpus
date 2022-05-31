@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ query }} - Corpus</title>
+    <style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.content {
+  width: 100%;
+  /*
+  width: 90%;
+  max-width: 960px;
+  margin: 0 3.35em;
+  */
+}
+
+.nav-wrap {
+  background-color: #DDE0E3;
+  border-bottom: solid 1px #DDE0E3;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+.nav > * { 
+  display: inline;
+}
+
+.nav input {
+  padding: 0.2em 0.5em;
+  border-radius: 0;
+  border: none;
+}
+
+input[type="submit"] {
+  background-color: #DDE0E3;
+}
+
+input[type="text"] {
+  background-color: #FFFFFF;
+}
+
+.search {
+  width: 90%;
+}
+
+
+.title::before {
+  font-family: serif;
+  padding: 0.2em;
+  content: "C";
+  font-weight: bold;
+  font-size: 2em;
+}
+
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .content {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 961px) {
+  .content {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .title::before {
+    content: attr(title);
+  }
+}
+
+/* debug */ 
+/*
+h1, p {
+    background-color: #DDE0E3;
+}
+
+em, strong {
+    background-color: #B2D6FF;
+}
+*/
+
+    </style>
+  </head>
+  <body>
+      <div class="nav-wrap">
+        <form class="content nav" action="#" method="GET">
+          <label class="title" title="Corpus"></label>
+          <input class="search" name="s" placeholder="Type here some terms to search">
+          <input type="submit" value="Lookup">
+        </form>
+      </div>
+      <div class="content">
+      <dl>
+        <dt>Making raliable distributed systems in the presence of software errors</dt>
+        <dd>0.789 examples/armstrong_thesis_2003.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
+      </dl>
+      <hr />
+      <p><small>Loaded in 20ms</small></p>
+      </div>
+  </body>
+</html>
