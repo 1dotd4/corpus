@@ -47,9 +47,13 @@
   ;; "Higher order" function that calculate cosine of angle between vectors
   (lambda (dj)
     ; (print dj)
-    (/ (dot-product dj q)
-       (* (norm-2 dj)
-          (norm-2 q)))))
+    (let ((norm-product 
+            (* (norm-2 dj)
+               (norm-2 q))))
+      (if (zero? norm-product)
+        0
+        (/ (dot-product dj q)
+           norm-product)))))
 
 ;; Read PDF stuff
 (define (read-pdf filename)
@@ -104,9 +108,11 @@
             ; (print (alist-ref t (cddr doc) string=? 0))
             ; (print (cadr doc))
             ; (print idf)
-            (* (/ (alist-ref t (cddr doc) string=? 0)
-                  (cadr doc))
-               idf)))
+            (if (zero? (cadr doc))
+              0
+              (* (/ (alist-ref t (cddr doc) string=? 0)
+                    (cadr doc))
+                 idf))))
         query-terms))
     (map doc-vect db)))
 (define (db:search db query)

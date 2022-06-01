@@ -1,0 +1,233 @@
+Will import `examples/compiling-to-categories.pdf`.
+1880ms
+Will import `examples/math/Crypto/(Discrete Mathematics and Its Applications) Alfred Menezes, Paul van Oorschot, Scott Vanstone - Handbook of Applied Cryptography-CRC Press (1996).pdf`.
+466230ms
+Will import `examples/math/Crypto/(Discrete Mathematics and Its Applications) Douglas R. Stinson - Cryptography_ Theory and Practice-Chapman and Hall_CRC (2005).pdf`.
+310ms
+Will import `examples/math/Crypto/(Elements of Mathematics) N. Bourbaki, P.M. Cohn, J. Howie - Algebra II_ Chapters 4 - 7-Springer (2003).pdf`.
+74040ms
+Will import `examples/math/Crypto/AGraduateCourseInAdvancedCryptography.pdf`.
+349240ms
+Will import `examples/math/Crypto/cryp06.pdf`.
+8000ms
+Will import `examples/math/Crypto/(Graduate Texts in Mathematics 114) Neal Koblitz (auth.) - A Course in Number Theory and Cryptography-Springer US (1987).pdf`.
+53100ms
+Will import `examples/math/Crypto/(Graduate Texts in Mathematics 84) Kenneth Ireland, Michael Rosen (auth.) - A Classical Introduction to Modern Number Theory-Springer New York (1982).pdf`.
+79430ms
+Will import `examples/math/Crypto/(Information Security and Cryptography) Nigel P. Smart (auth.) - Cryptography Made Simple-Springer International Publishing (2016).pdf`.
+173130ms
+Will import `examples/math/Crypto/An Introduction to Mathematical Cryptography.pdf`.
+196510ms
+Will import `examples/math/Crypto/(Lecture Notes in Computer Science 3325) Kihun Hong, Souhwan Jung, Luigi Lo Iacono, Christoph Ruland (auth.), Chae Hoon Lim, Moti Yung (eds.) - Information Security Applications_ 5th International Wor.pdf`.
+263210ms
+Will import `examples/math/Crypto/(Undergraduate Texts in Mathematics) Johannes Buchmann - Introduction to cryptography, Second Edition  -Springer (2004).pdf`.
+42050ms
+Will import `examples/math/Crypto/BonehShoup_0_5.pdf`.
+350950ms
+Will import `examples/math/Crypto/Bruce Schneier - Applied Cryptography_ Protocols, Algorithms and Source Code in C-Wiley (2015).pdf`.
+540600ms
+Will import `examples/math/Crypto/CT-Book-en.pdf`.
+217810ms
+Will import `examples/math/Crypto/Bruce Schneier - Secrets and Lies_ Digital Security in a Networked World-Wiley (2004).pdf`.
+101750ms
+Will import `examples/math/Crypto/CTB-Chapter_Lattice-Introduction_en.pdf`.
+10060ms
+Will import `examples/math/Crypto/Christof Paar, Jan Pelzl - Understanding cryptography_ a textbook for students and practitioners-Springer-Verlag Berlin Heidelberg (2009).pdf`.
+84000ms
+Will import `examples/math/Crypto/Crypto101.pdf`.
+25910ms
+Will import `examples/math/Crypto/David Kahn - The CodeBreakers-Scribner (1996).pdf`.
+244850ms
+Will import `examples/math/Crypto/H. Gaines - Cryptanalysis - A Study of Ciphers and Their Solution-Dover (1956).pdf`.
+2380ms
+Will import `examples/math/Crypto/Methods_II_watermark.pdf`.
+2430ms
+Will import `examples/math/Crypto/Jean-Philippe Aumasson - Serious Cryptography_ A Practical Introduction to Modern Encryption (2017, No Starch Press).pdf`.
+70060ms
+Will import `examples/math/Crypto/Koblitz_a_graduate_course_in_number_theory_and_cryptography.pdf`.
+61580ms
+Will import `examples/math/Crypto/Mark Stamp, Richard M. Low - Applied Cryptanalysis_ Breaking Ciphers in the Real World-Wiley-IEEE Press (2007).pdf`.
+109560ms
+Will import `examples/math/Crypto/MathematicalPublicKeyCryptography.pdf`.
+267750ms
+Will import `examples/math/Crypto/Menezes, Alfred J._ Vanstone, Scott A._ Van Oorschot, Paul C - Handbook of applied cryptography-CRC Press (2001).pdf`.
+535050ms
+Will import `examples/math/Crypto/Nigel Smart Cryptography Introduction 3rd edition.pdf`.
+133630ms
+Will import `examples/math/Crypto/Richard Crandall, Carl B. Pomerance - Prime numbers_ a computational perspective (2005, Springer).pdf`.
+279600ms
+Will import `examples/math/Crypto/Richard Crandall, Carl B. Pomerance - Prime numbers_ a computational perspective-Springer (2005).pdf`.
+294840ms
+Will import `examples/math/Crypto/WFFvol05watermark.pdf`.
+4010ms
+Will import `examples/math/Crypto/WFFvol08watermark.pdf`.
+3950ms
+Will import `examples/math/Crypto/[Discrete Mathematics and Its Applications] Douglas R. Stinson - Cryptography_ Theory and Practice (2005, Chapman and Hall_CRC).pdf`.
+3890ms
+Will import `examples/math/Crypto/[Graduate texts in mathematics  114] Neal Koblitz - Course In Number Theory And Cryptography (1994, Springer).pdf`.
+3820ms
+Will import `examples/math/Crypto/[J._F._Humphreys, M.Y. Prest]Numbers, Groups and(BookFi.org).pdf`.
+3920ms
+Will import `examples/math/Crypto/advances-in-cryptology-1984.pdf`.
+94830ms
+Will import `examples/math/Crypto/chap3_publickey.pdf`.
+6230ms
+Will import `examples/math/Crypto/cryptography_information_theory_error-correction.pdf`.
+203400ms
+Will import `examples/math/Crypto/diffie_hellman_new_directions.pdf`.
+6070ms
+Will import `examples/math/Crypto/mil_crypt_I.pdf`.
+67530ms
+Will import `examples/math/Crypto/mil_crypt_II.pdf`.
+42430ms
+Will import `examples/math/Crypto/mil_crypt_III.pdf`.
+41260ms
+Will import `examples/math/Crypto/mil_crypt_IV.pdf`.
+94140ms
+Will import `examples/math/Crypto/paper-self-study.pdf`.
+4710ms
+Will import `examples/math/CryptoPapers/10.1.1.117.9812.pdf`.
+4460ms
+Will import `examples/math/CryptoPapers/10.1.1.7.9688.pdf`.
+4330ms
+Will import `examples/math/CryptoPapers/1708.05844.pdf`.
+5170ms
+Will import `examples/math/CryptoPapers/1711.04062.pdf`.
+8750ms
+Will import `examples/math/CryptoPapers/200110_Meet.pdf`.
+4280ms
+Will import `examples/math/CryptoPapers/2007-107.pdf`.
+4400ms
+Will import `examples/math/CryptoPapers/2010-001.pdf`.
+4470ms
+Will import `examples/math/CryptoPapers/2014-106.pdf`.
+5690ms
+Will import `examples/math/CryptoPapers/2015-087.pdf`.
+6410ms
+Will import `examples/math/CryptoPapers/2016-1013.pdf`.
+16130ms
+Will import `examples/math/CryptoPapers/2016-263.pdf`.
+7260ms
+Will import `examples/math/CryptoPapers/2019-016.pdf`.
+14260ms
+Will import `examples/math/CryptoPapers/2019-1321.pdf`.
+6430ms
+Will import `examples/math/CryptoPapers/2019-1336.pdf`.
+17290ms
+Will import `examples/math/CryptoPapers/2019-713.pdf`.
+5390ms
+Will import `examples/math/CryptoPapers/2020-072.pdf`.
+9560ms
+Will import `examples/math/CryptoPapers/2020-196.pdf`.
+6610ms
+Will import `examples/math/CryptoPapers/2020-735.pdf`.
+10490ms
+Will import `examples/math/CryptoPapers/2020-823.pdf`.
+7820ms
+Will import `examples/math/CryptoPapers/2020-847.pdf`.
+7150ms
+Will import `examples/math/CryptoPapers/2020-849.pdf`.
+4750ms
+Will import `examples/math/CryptoPapers/2020-850.pdf`.
+4960ms
+Will import `examples/math/CryptoPapers/2020-925.pdf`.
+8870ms
+Will import `examples/math/CryptoPapers/49390038.pdf`.
+4900ms
+Will import `examples/math/CryptoPapers/A Riddle Wrapped in an Enigma (2015) - Koblitz, Menezes.pdf`.
+6260ms
+Will import `examples/math/CryptoPapers/Anti-SAT_ Mitigating SAT Attack on Logic Locking (2017) - Xie, Srivastava.pdf`.
+5990ms
+Will import `examples/math/CryptoPapers/CRYPTO/(Lecture Notes in Computer Science 11692) Alexandra Boldyreva, Daniele Micciancio - Advances in Cryptology – CRYPTO 2019_ 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, Augus.pdf`.
+506870ms
+Will import `examples/math/CryptoPapers/CRYPTO/(Lecture Notes in Computer Science 11693) Alexandra Boldyreva, Daniele Micciancio - Advances in Cryptology – CRYPTO 2019_ 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, Augus.pdf`.
+529050ms
+Will import `examples/math/CryptoPapers/CRYPTO/(Lecture Notes in Computer Science 11694) Alexandra Boldyreva, Daniele Micciancio - Advances in Cryptology – CRYPTO 2019_ 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, Augus.pdf`.
+499940ms
+Will import `examples/math/CryptoPapers/Cryptographic Hardware and Embedded Systems -- CHES 2015.pdf`.
+397620ms
+Will import `examples/math/CryptoPapers/EUROCRYPT/EUROCRYPT 2005.pdf`.
+319650ms
+Will import `examples/math/CryptoPapers/Fast Software Encryption - 23rd International Conference, FSE 2016.pdf`.
+277190ms
+Will import `examples/math/CryptoPapers/Knapsack.pdf`.
+6050ms
+Will import `examples/math/CryptoPapers/S07_Groves_Annex.pdf`.
+6100ms
+Will import `examples/math/CryptoPapers/ZKP/00_gmr-ZK.pdf`.
+8020ms
+Will import `examples/math/CryptoPapers/ZKP/01_62212.62222.pdf`.
+7260ms
+Will import `examples/math/CryptoPapers/ZKP/ZK-SNARKs/2013-507.pdf`.
+18600ms
+Will import `examples/math/CryptoPapers/ZKP/ZK-SNARKs/2013-879.pdf`.
+16580ms
+Will import `examples/math/CryptoPapers/ZKP/ZK-SNARKs/2018-557.pdf`.
+13570ms
+Will import `examples/math/CryptoPapers/ZKP/ZK-SNARKs/alisa-report.pdf`.
+8270ms
+Will import `examples/math/CryptoPapers/ZKP/ZK-SNARKs/ganesh_chaya.pdf`.
+34670ms
+Will import `examples/math/CryptoPapers/ZKP/zkp.pdf`.
+6320ms
+Will import `examples/math/CryptoPapers/ZKP/zkp_reference.pdf`.
+28850ms
+Will import `examples/math/CryptoPapers/LOL_ Functional Lattice Cryptography (2016) - Peikert.pdf`.
+23330ms
+Will import `examples/math/CryptoPapers/accumulators.pdf`.
+7530ms
+Will import `examples/math/CryptoPapers/algorithmica15.pdf`.
+13590ms
+Will import `examples/math/CryptoPapers/bonavoglia2019.pdf`.
+6740ms
+Will import `examples/math/CryptoPapers/bulletproofs.pdf`.
+16270ms
+Will import `examples/math/CryptoPapers/cbc-improved.pdf`.
+9030ms
+Will import `examples/math/CryptoPapers/diffie.hellman.pdf`.
+8790ms
+Will import `examples/math/CryptoPapers/dlbounds1.pdf`.
+8790ms
+Will import `examples/math/CryptoPapers/doubleratchet.pdf`.
+6990ms
+Will import `examples/math/CryptoPapers/ldc_tutorial.pdf`.
+8310ms
+Will import `examples/math/CryptoPapers/li2014.pdf`.
+10790ms
+Will import `examples/math/CryptoPapers/mco2016040013.pdf`.
+6490ms
+Will import `examples/math/CryptoPapers/moral-fn.pdf`.
+35420ms
+Will import `examples/math/CryptoPapers/pkcs.pdf`.
+8680ms
+Will import `examples/math/CryptoPapers/provablepossession.pdf`.
+10130ms
+Will import `examples/math/CryptoPapers/tremel.pdf`.
+8100ms
+Will import `examples/math/CryptoPapers/wu2014.pdf`.
+7630ms
+Will import `examples/math/CryptoPapers/x3dh.pdf`.
+6700ms
+Will import `examples/liberate_from_von_neumann.pdf`.
+20140ms
+Will import `examples/OnTheBuildingBlocksOfMathematicalLogic.pdf`.
+7350ms
+Will import `examples/Alexander Farrugia.pdf`.
+6910ms
+Will import `examples/phlou_0035-3841_1952_num_50_26_4394.pdf`.
+7760ms
+Will import `examples/notation_tool.pdf`.
+14540ms
+Will import `examples/armstrong_thesis_2003.pdf`.
+34710ms
+Will import `examples/phrasal_forms.pdf`.
+6940ms
+
+Total: To be calculated.
+
+$ du -h -d0 examples/
+706M    examples/
+$ du -h database.sexp
+9.7M	database.sexp
+$ find examples/ -type f | wc -l
+112
