@@ -3,125 +3,113 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ query }} - Corpus</title>
+    <title>{{ query }} - corpus</title>
     <style>
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: sans-serif;
-  font-size: 18px;
-}
+* { padding: 0; margin: 0; box-sizing: border-box; }
 
-.content {
-  width: 100%;
-  /*
-  width: 90%;
-  max-width: 960px;
-  margin: 0 3.35em;
-  */
-}
+body { font-family: sans-serif; font-size: 18px; }
+h1, h2, h3, h4, h5, h6, p { margin-bottom: 1rem; }
+small { font-weight: lighter; }
 
-.nav-wrap {
-  background-color: #DDE0E3;
-  border-bottom: solid 1px #DDE0E3;
-}
-.nav {
-  display: flex;
-  justify-content: space-between;
-}
-.nav > * { 
-  display: inline;
-}
+.content { width: 100%; }
 
-.nav input {
-  padding: 0.2em 0.5em;
-  border-radius: 0;
-  border: none;
-}
+.nav-wrap { background-color: #c6e6f8; border-bottom: solid 1px #c6e6f8; }
+.nav { display: flex; justify-content: space-between; }
+.nav > * { display: inline; }
+.nav input { font-size: 1.3em; line-height: 1.3;  padding: 0.2em 0.5em; border-radius: 0; border: none; }
+.search { width: 90%; }
 
-input[type="submit"] {
-  background-color: #DDE0E3;
-}
+input[type="submit"] { background-color: #c6e6f8; }
+input[type="text"] { background-color: #FFFFFF; }
 
-input[type="text"] {
-  background-color: #FFFFFF;
-}
-
-.search {
-  width: 90%;
-}
-
-
-.title::before {
+.title:before {
   font-family: serif;
-  padding: 0.2em;
-  content: "C";
+  display: inline-block;
+  padding: 0.2rem;
+  margin-bottom: 0.1rem;
+  margin-right: 0.3rem;
+  content: "c.";
   font-weight: bold;
   font-size: 2em;
 }
 
+dl { margin: 1rem 0; }
+dl > div { padding: 0.8rem 0; border-bottom: solid 1px #c6e6f8; }
+dl dt { margin-bottom: 0.5rem; }
+dl dd { font-size: 0.9rem; margin: 0.1rem 0 0.1rem 1rem; font-weight: lighter; }
+
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-  .content {
-    width: 90%;
-    margin: 0 auto;
-  }
+  .content { width: 90%; margin: 0 auto; }
 }
 @media only screen and (min-width: 961px) {
-  .content {
-    width: 960px;
-    margin: 0 auto;
-  }
-  .title::before {
-    content: attr(title);
-  }
+  body { font-size: 20px; }
+  .content { width: 960px; margin: 0 auto; }
+  .title::before { content: attr(title); }
 }
-
-/* debug */ 
-/*
-h1, p {
-    background-color: #DDE0E3;
-}
-
-em, strong {
-    background-color: #B2D6FF;
-}
-*/
 
     </style>
   </head>
   <body>
       <div class="nav-wrap">
         <form class="content nav" action="#" method="GET">
-          <label class="title" title="Corpus"></label>
+          <label class="title" title="corpus"></label>
           <input class="search" name="s" placeholder="Type here some terms to search">
-          <input type="submit" value="Lookup">
+          <input type="submit" value="Go">
         </form>
       </div>
       <div class="content">
-      <dl>
-        <dt>Making raliable distributed systems in the presence of software errors</dt>
-        <dd>0.789 examples/armstrong_thesis_2003.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-        <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
-        <dd>0.707 examples/Alexander Farrugia.pdf</dd>
-      </dl>
-      <hr />
-      <p><small>Loaded in 20ms</small></p>
+        <dl>
+          <div>
+            <dt>Making raliable distributed systems in the presence of software errors</dt>
+            <dd>0.789 &middot; examples/armstrong_thesis_2003.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+          <div>
+            <dt>Combinatory Logic: From Philosophy and Mathematics to Computer Science</dt>
+            <dd>0.707 &middot; examples/Alexander Farrugia.pdf</dd>
+          </div>
+        </dl>
+        <p><small>Loaded in 20ms</small></p>
       </div>
   </body>
 </html>
