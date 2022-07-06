@@ -231,3 +231,10 @@ $ du -h database.sexp
 9.7M	database.sexp
 $ find examples/ -type f | wc -l
 112
+
+word in query, time (ms)
+1,  2650
+2,  5340
+3,  8190
+4, 10370
+5, 13390

@@ -85,40 +85,57 @@
   ; TODO: find another way to print this without polluting the database
   (let ((terms 
           ((o ; it is possible to filter / map here
-              (cut map string-downcase <>)
-              split-words)
+             (cut map string-downcase <>)
+             split-words)
            (read-pdf doc-name))))
     (cons (cons doc-name (fold insert-term '(0 . ()) terms)) db)))
 (define (db:document-vectors query-terms db)
+  ;;;; Computation overview
+  ;; query-terms: (q1 q2 ... qn)
+  ;;; 1. compute now the number of documents that match a given term
+  ;; ((q1 . m1) (q2 . m2) ... ).
+  ;;; 2. for each document with this new term list compute the vector
+  ;; ((doc1 ... (v1 v2 ... vn)) ...)
+  ;;; 3. compute the score based on the query vector
   (define (count-document-matched t)
     (length
       (filter 
-        (lambda (d) (alist-ref t (cddr d)))
+        (lambda (d) (alist-ref t (cddr d) string=?))
         db)))
-  (let ((no-docs (length db)))
+  (define (doc:contains-terms ts)
+    (lambda (tf) (member (car tf) ts string=?)))
+  (let* ((no-docs (length db))
+         ;; 1
+         (terms-doc-match (zip query-terms
+                               (map count-document-matched
+                                    query-terms))))
     (define (doc-vect doc)
-      (map
-        (lambda (t)
-          (let* ((term-doc-match (count-document-matched t))
-                 (idf (/ (log (/ no-docs (add1 term-doc-match)))
-                         (log 10))))
-            ; (print (car doc))
-            ; (print (length (cddr doc)))
-            ; ; (print (cddr doc))
-            ; (print (alist-ref t (cddr doc) string=? 0))
-            ; (print (cadr doc))
-            ; (print idf)
-            (if (zero? (cadr doc))
-              0
-              (* (/ (alist-ref t (cddr doc) string=? 0)
-                    (cadr doc))
-                 idf))))
-        query-terms))
+      (let ((smaller-doc (filter (doc:contains-terms query-terms)
+                                 (cddr doc))))
+        (map
+          (lambda (t)
+            (let* ((term-doc-match (cadr t))
+                   (idf (/ (log (/ no-docs (add1 term-doc-match)))
+                           (log 10))))
+              ; (print (car doc))
+              ; (print (length (cddr doc)))
+              ; ; (print (cddr doc))
+              ; (print (alist-ref t (cddr doc) string=? 0))
+              ; (print (cadr doc))
+              ; (print idf)
+              (if (zero? (cadr doc))
+                0
+                ;; 2,3
+                (* (/ (alist-ref (car t) smaller-doc string=? 0)
+                      (cadr doc))
+                   idf))))
+          terms-doc-match)))
     (map doc-vect db)))
 (define (db:search db query)
   (set-cpu-time!)
   (print "Searching...")
   (let* ((query-terms  (split-words query))
+         ; todo: maybe compute tfidf for query too
          (query-vector (map (lambda (x) 1) (iota (length query-terms))))
          (terms-vectors (db:document-vectors query-terms db)))
     (sort 
