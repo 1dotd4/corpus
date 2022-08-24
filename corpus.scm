@@ -39,7 +39,7 @@
   )
 
 ;; Version of the software
-(define +version+ "corpus 0.1")
+(define +version+ "corpus 0.3")
  ;; Selected server port
 (define *selected-server-port* 6660)
 
