@@ -1,8 +1,25 @@
+;;;; corpus - indexing and searching PDFs.
+;;
+;; Copyright (C) 2022 d4 (unpx.net)
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU Affero General Public License as
+;; published by the Free Software Foundation, either version 3 of the
+;; License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU Affero General Public License for more details.
+;;
+;; You should have received a copy of the GNU Affero General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 (import 
   (srfi-1)
   (srfi-13)
+  (srfi-28)
   (args)
-  (format)
   (chicken io)
   (chicken port)
   (chicken sort)
@@ -13,10 +30,64 @@
   (chicken string)
   (chicken process)
   (chicken process-context)
+  (chicken process signal)
   ;
+  spiffy
+  intarweb
+  uri-common
+  sxml-serializer
   )
 
+;; Version of the software
 (define +version+ "corpus 0.1")
+ ;; Selected server port
+(define *selected-server-port* 6660)
+
+(define +style+ "
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
+body { font-family: sans-serif; font-size: 18px; }
+h1, h2, h3, h4, h5, h6, p { margin-bottom: 1rem; }
+small { font-weight: lighter; }
+
+.content { width: 100%; }
+
+.nav-wrap { background-color: #c6e6f8; border-bottom: solid 1px #c6e6f8; }
+.nav { display: flex; justify-content: space-between; }
+.nav * { display: inline; }
+.nav input { font-size: 1.3em; line-height: 1.3;  padding: 0.2em 0.5em; border-radius: 0; border: none; }
+.search { width: 90%; }
+
+input[type=\"submit\"] { background-color: #c6e6f8; }
+input[type=\"text\"] { background-color: #FFFFFF; }
+
+.title:before {
+  font-family: serif;
+  display: inline-block;
+  padding: 0.2rem;
+  margin-bottom: 0.1rem;
+  margin-right: 0.3rem;
+  content: \"c.\";
+  font-weight: bold;
+  font-size: 2em;
+}
+
+dl { margin: 1rem 0; }
+dl div { padding: 0.8rem 0; border-bottom: solid 1px #c6e6f8; }
+dl dt { margin-bottom: 0.5rem; }
+dl dd { font-size: 0.9rem; margin: 0.1rem 0.7rem; font-weight: lighter; }
+
+p { margin-top: 1em; }
+
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .content { width: 90%; margin: 0 auto; }
+}
+@media only screen and (min-width: 961px) {
+  body { font-size: 20px; }
+  .content { width: 960px; margin: 0 auto; }
+  .title::before { content: attr(title); }
+}
+")
 
 ;; Helpers
 (define (split-pages s)
@@ -161,15 +232,116 @@
     (with-output-to-file
       "database.sexp"
       (lambda () (write db)))))
+
+(define (display-results results)
+  (map (lambda (r) (format #t "~5F\t~A\n" (cadr r) (car r))) ; TODO: better methods for result inspection
+        (reverse results)))
 ;; Search
 (define (search-from-sexp operands)
-  (define (display-results results)
-    (map (lambda (r) (format #t "~5F\t~A\n" (cadr r) (car r))) ; TODO: better methods for result inspection
-         (reverse results)))
   (display-results
     (db:search
       (db:load-database)
       (string-join operands " "))))
+
+
+;;; Web server
+
+(define (web:database) '())
+(define (reload-database n)
+  (print n)
+  (set! web:database (db:load-database))
+  (print "Reloaded!"))
+
+(define (render-results results)
+  `(
+    (small (p (conc "Found " ,(number->string (length results)) " documents.")))
+    (dl
+      ,(map
+         (lambda (r)
+           `(div
+              (dt ,(car r))
+              (dd ,(cadr r))))
+         results))
+    ))
+
+(define +not-found-page+
+  `(html
+     (head
+       (meta (@ (charset "utf-8")))
+       (title "Page not found - corpus")
+       (meta (@ (name "viewport") (content "width=device-width, initial-scale=1, shrink-to-fit=no")))
+       (meta (@ (name "author") (content "d4")))
+       (style ,+style+))
+     (body (h1 "Not found!"))))
+
+(define +home-page+
+  `(div (@ (class "banner"))
+        (p "Welcome to corpus. Use the search bar to query for terms.")))
+
+(define (build-page title content)
+  ;; Function that build the appropriate page
+  `(html
+     (head
+       (meta (@ (charset "utf-8")))
+       (title ,(string-append title " - corpus"))
+       (meta (@ (name "viewport") (content "width=device-width, initial-scale=1, shrink-to-fit=no")))
+       (meta (@ (name "author") (content "d4")))
+       (style ,+style+))
+
+     (body
+       (div (@ (class "nav-wrap"))
+            (form (@ (class "content nav")
+                     (action "#")
+                     (method "GET"))
+                  (label (@ (class "title")
+                            (title "corpus"))
+                         "")
+                  (input (@ (class "search")
+                            (name "s")
+                            (placeholder "Type here some terms to search")))
+                  (input (@ (type "submit")
+                            (value "Go")))))
+       (div (@ (class "content"))
+            ,content
+            (p
+              (small
+                ,(conc "Loaded in " "2s" " · ")
+                (a (@ (class "text-info")
+                      (href "http://unpx.net/code/git-overview.git/"))
+                   ,+version+)))))))
+
+(define (send-sxml-response sxml)
+  ;; Function to serialize and send SXML as HTML
+  (with-headers
+    `((connection close))
+    (lambda () (write-logged-response)))
+  (serialize-sxml
+    sxml
+    output: (response-port (current-response)))) 
+
+(define (handle-request continue)
+  ;; Function that handles an HTTP requsest in spiffy
+  (let* ((uri (request-uri (current-request)))
+         (path (uri-path uri))
+         (current-time (current-seconds))
+         (query (uri-query uri))
+         (search-string (assoc 's query)))
+    (cond ((equal? path '(/ "corpus" "")) 
+           (send-sxml-response
+             (if (and search-string (not (string=? "" (cdr search-string))))
+               (build-page (cdr search-string)
+                           (render-results (db:search (db:load-database) (cdr search-string))))
+               (build-page "Home" +home-page+))))
+          (else (send-sxml-response +not-found-page+)))))
+
+ ;; Map a any vhost to the main handler
+(vhost-map `((".*" . ,handle-request)))
+
+(define (serve)
+  (set-signal-handler! signal/hup reload-database)
+  (reload-database 0)
+  (server-port *selected-server-port*) 
+  (start-server))
 
 ;; Options handling
 (define operation 'none)
@@ -178,6 +350,9 @@
   (list (args:make-option
           (a add) #:none "Add document to the index"
           (set! operation 'add))
+        (args:make-option
+          (s serve) #:none "Serve current database"
+          (set! operation 'serve))
         (args:make-option
           (v V version) #:none "Display version"
           (print +version+)
@@ -203,6 +378,9 @@
   (cond ((equal? operation 'add)
          (print (conc "Will import `" (string-join operands " ") "`."))
          (index-to-sexp operands))
+        ((equal? operation 'serve)
+         (print (conc "Will start web server at port " *selected-server-port*))
+         (serve))
         (else
           (print (conc "Searching for terms: `" (string-join operands " ") "`."))
           (search-from-sexp operands))))
