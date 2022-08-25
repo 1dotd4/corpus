@@ -246,7 +246,7 @@ p { margin-top: 1em; }
 
 ;;; Web server
 
-(define (web:database) '())
+(define web:database '())
 (define (reload-database n)
   (print n)
   (set! web:database (db:load-database))
@@ -330,7 +330,7 @@ p { margin-top: 1em; }
            (send-sxml-response
              (if (and search-string (not (string=? "" (cdr search-string))))
                (build-page (cdr search-string)
-                           (render-results (db:search (db:load-database) (cdr search-string))))
+                           (render-results (db:search web:database (cdr search-string))))
                (build-page "Home" +home-page+))))
           (else (send-sxml-response +not-found-page+)))))
 
